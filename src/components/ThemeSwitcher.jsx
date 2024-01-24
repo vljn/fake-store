@@ -22,7 +22,7 @@ export default function ThemeSwitcher() {
   }, [darkMode]);
 
   return (
-    <button>
+    <button className="text-foreground-light dark:text-foreground-dark">
       <FontAwesomeIcon
         icon={darkMode ? faSun : faMoon}
         size="2xl"

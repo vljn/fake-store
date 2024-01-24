@@ -7,6 +7,16 @@ export default {
       fontFamily: {
         poppins: 'poppins, sans-serif',
       },
+      colors: {
+        'primary-light': '#7531eb',
+        'primary-dark': '#4710a6',
+        'primary-content': '#f2ebfd',
+
+        'background-light': '#efeff1',
+        'background-dark': '#19181b',
+        'foreground-light': '#252329',
+        'foreground-dark': '#fbfbfb',
+      },
     },
   },
   plugins: [],
