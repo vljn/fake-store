@@ -19,6 +19,9 @@ export default {
 
         'text-light': '#252329',
         'text-dark': '#fbfbfb',
+
+        'border-light': '#dedde2',
+        'border-dark': '#3e3b45',
       },
     },
   },
