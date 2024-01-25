@@ -1,5 +1,6 @@
 import Header from './Header';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 import 'animate.css';
 
 function Home() {
@@ -11,7 +12,9 @@ function Home() {
           pay less, buy more.
         </h1>
         <div className="flex justify-center mt-10">
-          <Button>check out</Button>
+          <Link to={'items'}>
+            <Button>check out</Button>
+          </Link>
         </div>
       </div>
     </>
