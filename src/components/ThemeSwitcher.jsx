@@ -8,26 +8,34 @@ export default function ThemeSwitcher() {
 
   useEffect(() => {
     let dark = localStorage.getItem('darkMode');
+    console.log(dark);
     if (!dark) {
       const saved = window.matchMedia('(prefers-color-scheme: dark)').matches;
       localStorage.setItem('darkMode', saved);
       dark = saved;
     }
-    setDarkMode(dark);
+    if (dark === 'false') {
+      setDarkMode(false);
+    } else {
+      setDarkMode(true);
+    }
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark');
-    console.log(document.documentElement);
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, [darkMode]);
 
   return (
-    <button className="text-foreground-light dark:text-foreground-dark hover:scale-125 transition-transform">
+    <button className="text-foreground-light dark:text-foreground-dark hover:scale-125 transition-transform text-lg">
       <FontAwesomeIcon
         icon={darkMode ? faSun : faMoon}
-        size="2xl"
         onClick={() => {
           setDarkMode(!darkMode);
+          localStorage.setItem('darkMode', !darkMode);
         }}
       />
     </button>
