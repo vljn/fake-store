@@ -13,7 +13,7 @@ export default function Logo({ path }) {
         />
         <div className="relative">
           <h1 className="max-sm:text-2xl font-poppins font-bold text-3xl select-none dark:text-foreground-dark text-foreground-light after:content-[' '] after:w-full after:scale-x-0 group-hover:after:scale-x-100 after:h-1 dark:after:bg-foreground-dark after:absolute after:-bottom-2 after:left-0 after:transition-transform after:origin-right after:duration-300">
-            FakeShop.
+            FakeStore.
           </h1>
         </div>
       </div>
