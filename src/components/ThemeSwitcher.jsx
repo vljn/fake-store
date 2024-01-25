@@ -30,7 +30,7 @@ export default function ThemeSwitcher() {
   }, [darkMode]);
 
   return (
-    <button className="text-foreground-light dark:text-foreground-dark hover:scale-125 transition-transform text-4xl max-sm:text-2xl max-sm:absolute max-sm:bottom-8 max-sm:right-8">
+    <button className="hover:scale-125 transition-transform text-4xl max-sm:text-2xl max-sm:absolute max-sm:bottom-8 max-sm:right-8">
       <FontAwesomeIcon
         icon={darkMode ? faSun : faMoon}
         onClick={() => {

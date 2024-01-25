@@ -14,8 +14,11 @@ export default {
 
         'background-light': '#efeff1',
         'background-dark': '#19181b',
-        'foreground-light': '#252329',
-        'foreground-dark': '#fbfbfb',
+        'foreground-light': '#fbfbfb',
+        'foreground-dark': '#252329',
+
+        'text-light': '#252329',
+        'text-dark': '#fbfbfb',
       },
     },
   },
