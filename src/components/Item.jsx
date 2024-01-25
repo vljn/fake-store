@@ -4,8 +4,8 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export default function Item({ image, title, description, price }) {
   return (
-    <div className="flex flex-col w-72 px-6 py-6 rounded-3xl gap-6 bg-foreground-light dark:bg-foreground-dark border-4 border-border-light dark:border-border-dark">
-      <img src={image} alt="" className="w-36 self-center" />
+    <div className="flex flex-col w-full px-6 py-6 rounded-3xl gap-6 bg-foreground-light dark:bg-foreground-dark border-4 border-border-light dark:border-border-dark">
+      <img src={image} alt="" className="w-48 self-center" />
       <div>
         <h2 className="text-4xl">{title}</h2>
         <div className="truncate mb-4 mt-2">{description}</div>
