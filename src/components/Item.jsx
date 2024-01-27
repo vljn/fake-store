@@ -8,7 +8,7 @@ export default function Item({ image, title, description, price }) {
       <img
         src={image}
         alt=""
-        className="max-lg:h-20 max-lg:w-20 object-cover flex-shrink-1 mr-2 lg:m-0 lg:w-full object-top l lg:h-60 lg:hover:object-scale-down lg:transition-transform border-b-2 border-b-primary-light dark:border-b-primary-dark"
+        className="max-lg:h-20 max-lg:w-20 object-cover flex-shrink-1 mr-2 lg:m-0 lg:w-full object-top l lg:h-60 lg:hover:object-scale-down lg:transition-transform lg:border-b-2 border-b-primary-light dark:border-b-primary-dark"
       />
       <div className="flex items-center justify-between w-full max-lg:h-full lg:px-6 lg:py-6 lg:items-end lg:flex-grow-2">
         <div className="">
