@@ -4,7 +4,7 @@ import Item from './Item';
 export default function ItemsList({ items }) {
   console.log(items);
   return (
-    <div className="px-20 grid grid-cols-[repeat(auto-fit,minmax(30rem,1fr))] gap-8">
+    <div className="mx-8 lg:grid lg:grid-cols-[repeat(auto-fit,minmax(24rem,1fr))] lg:gap-12 lg:mx-20 ">
       {items.map((item) => (
         <Item
           title={item.title}
