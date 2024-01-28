@@ -45,7 +45,7 @@ export default function SingleItem() {
           <h1 className="text-center text-4xl mt-6 border-2 border-primary-light mx-16 rounded-2xl py-2 shadow-md sm:mx-auto sm:w-60">
             {data.price}$
           </h1>
-          <button className="dark:bg-primary-dark bg-primary-light rounded-2xl my-4 py-2 px-6 shadow-md lg:border-2 lg:border-transparent lg:hover:border-border-light lg:transition-colors lg:text-text-dark lg:box-border">
+          <button className="dark:bg-primary-dark bg-primary-light rounded-2xl my-4 py-2 px-6 shadow-md lg:border-2 lg:border-transparent lg:hover:border-border-light lg:transition-colors text-text-dark lg:box-border">
             <FontAwesomeIcon icon={faCartShopping} className="mr-4" />
             Add to cart
           </button>
