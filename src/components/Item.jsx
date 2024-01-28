@@ -1,10 +1,17 @@
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
-export default function Item({ image, title, price }) {
+export default function Item({ id, image, title, price }) {
+  const navigate = useNavigate();
   return (
-    <div className="dark:bg-foreground-dark border-2 bg-foreground-light dark:border-border-dark border-border-light rounded-xl hover:scale-[105%] hover:shadow-[0px_0px_25px_0px_rgba(25,24,27,0.5)] transition-[shadow_transform] dark:hover:shadow-[0px_0px_25px_-5px_rgba(239,239,241,0.5)] items-center flex mb-10 overflow-hidden lg:flex-col lg:m-0 cursor-pointer lg:rounded-2xl lg:items-start group lg:justify-between">
+    <div
+      className="dark:bg-foreground-dark border-2 bg-foreground-light dark:border-border-dark border-border-light rounded-xl hover:scale-[105%] hover:shadow-[0px_0px_25px_0px_rgba(25,24,27,0.5)] transition-[shadow_transform] dark:hover:shadow-[0px_0px_25px_-5px_rgba(239,239,241,0.5)] items-center flex mb-10 overflow-hidden lg:flex-col lg:m-0 cursor-pointer lg:rounded-2xl lg:items-start group lg:justify-between"
+      onClick={() => {
+        navigate('/items/' + id);
+      }}
+    >
       <img
         src={image}
         alt=""
@@ -28,6 +35,7 @@ export default function Item({ image, title, price }) {
 }
 
 Item.propTypes = {
+  id: PropTypes.number,
   image: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
