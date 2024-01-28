@@ -8,7 +8,6 @@ export default function ThemeSwitcher() {
 
   useEffect(() => {
     let dark = localStorage.getItem('darkMode');
-    console.log(dark);
     if (!dark) {
       const saved = window.matchMedia('(prefers-color-scheme: dark)').matches;
       localStorage.setItem('darkMode', saved);

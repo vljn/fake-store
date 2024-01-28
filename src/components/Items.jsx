@@ -27,8 +27,6 @@ export default function Items() {
     );
   }
 
-  console.log(data);
-
   return (
     <>
       <Header path="/" />
