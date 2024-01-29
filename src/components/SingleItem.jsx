@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Loading from './Loading';
 import { Navigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import Error from './Error';
 
 export default function SingleItem({ cart }) {
   const { id } = useParams();
@@ -40,9 +41,8 @@ export default function SingleItem({ cart }) {
     }
     return (
       <>
-        <Header path="/" />
-        <h1>Error</h1>
-        <p>{error.message}</p>
+        <Header path={'/'} />
+        <Error message={error.message} />
       </>
     );
   }
