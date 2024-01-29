@@ -1,6 +1,7 @@
 import Header from './Header';
 import { useParams } from 'react-router-dom';
 import useFetch from 'react-fetch-hook';
+import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
@@ -9,8 +10,20 @@ import Loading from './Loading';
 
 export default function SingleItem({ cart }) {
   const { id } = useParams();
-
+  const [quantity, setQuantity] = useState(1);
   const { isLoading, data } = useFetch('https://fakestoreapi.com/products/' + id);
+
+  const handleQuantityChange = (e) => {
+    console.log(e);
+    setQuantity(e.target.value);
+  };
+
+  const handleAddToCart = () => {
+    const q = parseInt(quantity);
+    if (Number.isInteger(q) && q > 0) {
+      cart.addItem(data.id, parseInt(q));
+    }
+  };
 
   if (isLoading) {
     return (
@@ -41,14 +54,44 @@ export default function SingleItem({ cart }) {
           <p className="text-center mt-4 mx-5 lg:mx-20">{data.description}</p>
         </div>
         <div className="lg:self-end">
-          <h1 className="text-center text-4xl mt-6 border-2 border-primary-light mx-16 rounded-2xl py-2 shadow-md sm:mx-auto sm:w-60">
+          <h1 className="text-center text-4xl mt-6 border-2 border-primary-light dark:border-primary-dark mx-16 rounded-2xl py-2 shadow-md sm:mx-auto sm:w-60">
             {data.price}$
           </h1>
+          <form className="mt-4 flex items-center justify-center gap-4">
+            <button
+              className="text-3xl border-2 w-10 h-10 dark:border-primary-dark border-primary-light hover:bg-border-dark rounded-3xl duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                setQuantity((q) => {
+                  if (q > 1) {
+                    return q - 1;
+                  }
+                  return q;
+                });
+              }}
+            >
+              -
+            </button>
+            <input
+              className="required bg-transparent text-center shadow-md text-2xl border-2 rounded-2xl dark:border-primary-dark border-primary-light w-32 focus:outline-none appearance-[textfield] m-0"
+              type="number"
+              value={quantity}
+              onInput={handleQuantityChange}
+              min={1}
+            />
+            <button
+              className="text-3xl border-2 w-10 h-10 dark:border-primary-dark border-primary-light rounded-3xl hover:bg-border-dark transition-colors duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                setQuantity((q) => q + 1);
+              }}
+            >
+              +
+            </button>
+          </form>
           <button
-            className="dark:bg-primary-dark bg-primary-light rounded-2xl my-4 py-2 px-6 shadow-md lg:border-2 lg:border-transparent lg:hover:border-border-light lg:transition-colors text-text-dark lg:box-border"
-            onClick={() => {
-              cart.addItem(data.id, 1);
-            }}
+            className="dark:bg-primary-dark bg-primary-light rounded-2xl mt-4 py-2 px-6 shadow-md lg:border-2 lg:border-transparent lg:hover:border-border-light lg:transition-colors text-text-dark lg:box-border"
+            onClick={handleAddToCart}
           >
             <FontAwesomeIcon icon={faCartShopping} className="mr-4" />
             Add to cart
