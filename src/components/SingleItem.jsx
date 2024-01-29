@@ -62,12 +62,12 @@ export default function SingleItem({ cart }) {
             className=" rounded-[0.75rem] sm:w-full lg:w-max lg:h-full"
           />
         </div>
-        <div>
-          <h1 className="text-center text-xl mt-4 mx-2 lg:m-0 lg:text-2xl">{data.title}</h1>
-          <p className="text-center mt-4 mx-5 lg:mx-20">{data.description}</p>
+        <div className="px-6">
+          <h1 className="text-center text-2xl mt-4 lg:m-0 lg:text-4xl font-bold">{data.title}</h1>
+          <p className="text-center mt-4 lg:px-20 lg:text-xl">{data.description}</p>
         </div>
         <div className="lg:self-end">
-          <h1 className="text-center text-4xl mt-6 border-2 border-primary-light dark:border-primary-dark mx-16 rounded-2xl py-2 shadow-md sm:mx-auto sm:w-60">
+          <h1 className="text-center text-4xl mt-6 border-2 border-primary-light dark:border-primary-dark mx-16 rounded-2xl py-2 shadow-md sm:mx-auto sm:w-60 font-bold">
             {data.price}$
           </h1>
           <form className="mt-4 flex items-center justify-center gap-4">
