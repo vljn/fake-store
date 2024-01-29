@@ -1,17 +1,17 @@
 import Header from './Header';
 import { useParams } from 'react-router-dom';
-import useFetch from 'react-fetch-hook';
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import { Navigate } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
 
 export default function SingleItem({ cart }) {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const { isLoading, data } = useFetch('https://fakestoreapi.com/products/' + id);
+  const { status, data, error } = useFetch('https://fakestoreapi.com/products/' + id);
 
   const handleQuantityChange = (e) => {
     console.log(e);
@@ -25,7 +25,7 @@ export default function SingleItem({ cart }) {
     }
   };
 
-  if (isLoading) {
+  if (status === 'loading') {
     return (
       <>
         <Header path="/" />
@@ -34,8 +34,21 @@ export default function SingleItem({ cart }) {
     );
   }
 
-  if (!isLoading && !data) {
-    return <Navigate to={'*'} />;
+  if (status === 'error') {
+    if (error.response.status === 404) {
+      return <Navigate to="*" />;
+    }
+    return (
+      <>
+        <Header path="/" />
+        <h1>Error</h1>
+        <p>{error.message}</p>
+      </>
+    );
+  }
+
+  if (!data) {
+    return <Navigate to="*" />;
   }
 
   return (
