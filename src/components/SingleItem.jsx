@@ -59,7 +59,7 @@ export default function SingleItem({ cart }) {
           </h1>
           <form className="mt-4 flex items-center justify-center gap-4">
             <button
-              className="text-3xl border-2 w-10 h-10 dark:border-primary-dark border-primary-light hover:bg-border-dark rounded-3xl duration-300"
+              className="text-3xl border-2 w-10 h-10 dark:border-primary-dark border-primary-light dark:hover:bg-border-dark hover:bg-border-light rounded-3xl duration-300"
               onClick={(e) => {
                 e.preventDefault();
                 setQuantity((q) => {
@@ -80,7 +80,7 @@ export default function SingleItem({ cart }) {
               min={1}
             />
             <button
-              className="text-3xl border-2 w-10 h-10 dark:border-primary-dark border-primary-light rounded-3xl hover:bg-border-dark transition-colors duration-300"
+              className="text-3xl border-2 w-10 h-10 dark:border-primary-dark border-primary-light rounded-3xl dark:hover:bg-border-dark hover:bg-border-light transition-colors duration-300"
               onClick={(e) => {
                 e.preventDefault();
                 setQuantity((q) => q + 1);
