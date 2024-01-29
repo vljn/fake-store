@@ -22,5 +22,5 @@ export default function ItemsList({ items, cart }) {
 
 ItemsList.propTypes = {
   items: PropTypes.array,
-  cart: PropTypes.cart,
+  cart: PropTypes.object,
 };
