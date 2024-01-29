@@ -5,6 +5,13 @@ export default function Cart({ cart }) {
   return (
     <>
       <Header path={'/'} />
+      <div>
+        {cart.cart.map((item) => (
+          <div key={item.id}>
+            {item.id}, quantity: {item.quantity}
+          </div>
+        ))}
+      </div>
     </>
   );
 }
