@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import useFetch from 'react-fetch-hook';
 import { Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 
 export default function SingleItem({ cart }) {
   const { id } = useParams();
@@ -16,9 +16,7 @@ export default function SingleItem({ cart }) {
     return (
       <>
         <Header path="/" />
-        <div className="h-svh w-svw absolute top-0 bottom-0 flex justify-center items-center text-8xl">
-          <FontAwesomeIcon icon={faCircleNotch} spin />
-        </div>
+        <Loading />
       </>
     );
   }
