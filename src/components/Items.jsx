@@ -3,8 +3,9 @@ import Header from './Header';
 import ItemsList from './ItemsList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
-export default function Items() {
+export default function Items({ cart }) {
   const { isLoading, data, error } = useFetch('https://fakestoreapi.com/products');
 
   if (isLoading) {
@@ -30,7 +31,11 @@ export default function Items() {
   return (
     <>
       <Header path="/" />
-      <ItemsList items={data} />
+      <ItemsList items={data} cart={cart} />
     </>
   );
 }
+
+Items.propTypes = {
+  cart: PropTypes.object,
+};

@@ -3,8 +3,10 @@ import Home from './Home';
 import NotFound from './NotFound';
 import Items from './Items';
 import SingleItem from './SingleItem';
+import Cart from './Cart';
+import PropTypes from 'prop-types';
 
-export default function Router() {
+export default function Router({ cart }) {
   const router = createBrowserRouter([
     {
       path: '/',
@@ -16,13 +18,18 @@ export default function Router() {
     },
     {
       path: 'items',
-      element: <Items />,
+      element: <Items cart={cart} />,
     },
     {
       path: 'items/:id',
-      element: <SingleItem />,
+      element: <SingleItem cart={cart} />,
     },
+    { path: 'cart', element: <Cart cart={cart} /> },
   ]);
 
   return <RouterProvider router={router} />;
 }
+
+Router.propTypes = {
+  cart: PropTypes.object,
+};

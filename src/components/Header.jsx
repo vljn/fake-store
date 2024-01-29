@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import ThemeSwitcher from './ThemeSwitcher';
+import CartButton from './CartButton';
 import PropTypes from 'prop-types';
 
 export default function Header({ path }) {
@@ -14,7 +15,8 @@ export default function Header({ path }) {
           </h2>
         </Link>
       </div>
-      <div>
+      <div className="max-sm:fixed max-sm:bottom-8 max-sm:right-6 z-10 flex gap-6">
+        <CartButton />
         <ThemeSwitcher />
       </div>
     </div>

@@ -5,8 +5,9 @@ import { Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
-export default function SingleItem() {
+export default function SingleItem({ cart }) {
   const { id } = useParams();
 
   const { isLoading, data } = useFetch('https://fakestoreapi.com/products/' + id);
@@ -45,7 +46,12 @@ export default function SingleItem() {
           <h1 className="text-center text-4xl mt-6 border-2 border-primary-light mx-16 rounded-2xl py-2 shadow-md sm:mx-auto sm:w-60">
             {data.price}$
           </h1>
-          <button className="dark:bg-primary-dark bg-primary-light rounded-2xl my-4 py-2 px-6 shadow-md lg:border-2 lg:border-transparent lg:hover:border-border-light lg:transition-colors text-text-dark lg:box-border">
+          <button
+            className="dark:bg-primary-dark bg-primary-light rounded-2xl my-4 py-2 px-6 shadow-md lg:border-2 lg:border-transparent lg:hover:border-border-light lg:transition-colors text-text-dark lg:box-border"
+            onClick={() => {
+              cart.addItem(data.id, 1);
+            }}
+          >
             <FontAwesomeIcon icon={faCartShopping} className="mr-4" />
             Add to cart
           </button>
@@ -54,3 +60,7 @@ export default function SingleItem() {
     </>
   );
 }
+
+SingleItem.propTypes = {
+  cart: PropTypes.object,
+};
