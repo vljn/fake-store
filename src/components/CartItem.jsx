@@ -20,7 +20,7 @@ export default function CartItem({ item, deleteHandler }) {
           <h1 className="line-clamp-3 text-xl">{item.title}</h1>
         </Link>
       </div>
-      <div className="sm:ml-5 sm:mt-3">
+      <div className="sm:ml-5 sm:mt-3 text-right">
         <h1 className="font-bold text-xl my-2">{item.price}$</h1>
         <h1 className="text-lg">qt: {item.quantity}</h1>
       </div>
