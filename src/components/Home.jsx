@@ -8,7 +8,7 @@ function Home() {
     <>
       <Header />
       <div>
-        <h1 className="animate__animated animate__fadeInDow text-center text-6xl font-poppins mt-20 leading-relaxed max-sm:text-3xl">
+        <h1 className="animate__animated animate__fadeInDown text-center text-6xl font-poppins mt-20 leading-relaxed max-sm:text-3xl">
           pay less, buy more.
         </h1>
         <div className="flex justify-center mt-10">
