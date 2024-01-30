@@ -1,18 +1,35 @@
 import Header from './Header';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import { Navigate } from 'react-router-dom';
-import useFetch from '../hooks/useFetch';
 import Error from './Error';
+import axios from 'axios';
 
 export default function SingleItem({ cart }) {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const { status, data, error } = useFetch('https://fakestoreapi.com/products/' + id);
+  const [status, setStatus] = useState('loading');
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetch = async () => {
+      setStatus('loading');
+      try {
+        const response = await axios.get('https://fakestoreapi.com/products/' + id);
+        setStatus('success');
+        setData(response.data);
+      } catch (err) {
+        setStatus('error');
+        setError(err);
+      }
+    };
+    fetch();
+  }, [id]);
 
   const handleQuantityChange = (e) => {
     console.log(e);
@@ -56,11 +73,7 @@ export default function SingleItem({ cart }) {
       <Header path={'/'} />
       <div className="text-center lg:grid lg:grid-cols-[400px_1fr] lg:grid-rows-2 lg:mx-16 lg:mt-10">
         <div className="max-sm:mx-24 border-4 border-primary-light dark:border-primary-dark p-1 rounded-2xl shadow-md sm:max-w-80 sm:mx-auto lg:m-0 lg:max-w-none lg:row-span-2 lg:hover:scale-110 lg:transition-transform">
-          <img
-            src={data.image}
-            alt=""
-            className=" rounded-[0.75rem] sm:w-full lg:w-max lg:h-full"
-          />
+          <img src={data.image} alt="" className="rounded-[0.75rem] sm:w-full lg:w-max lg:h-full" />
         </div>
         <div className="px-6">
           <h1 className="text-center text-2xl mt-4 lg:m-0 lg:text-4xl font-bold">{data.title}</h1>
