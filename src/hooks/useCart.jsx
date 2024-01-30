@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function useCart() {
-  const [cart, setCart] = useState([]);
+  const storageValue = localStorage.getItem('cart');
+  const [cart, setCart] = useState(storageValue ? JSON.parse(storageValue) : []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   function addItem(id, quantity = 1) {
     if (cart.some((item) => item.id === id)) {
