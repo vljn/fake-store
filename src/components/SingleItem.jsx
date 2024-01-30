@@ -116,7 +116,7 @@ export default function SingleItem({ cart }) {
             </button>
           </form>
           <button
-            className="dark:bg-primary-dark bg-primary-light rounded-2xl mt-4 py-2 px-6 shadow-md lg:border-2 lg:border-transparent lg:hover:border-border-light lg:transition-colors text-text-dark lg:box-border"
+            className="dark:bg-primary-dark bg-primary-light rounded-2xl mt-4 py-2 px-6 shadow-md lg:border-2 lg:border-transparent lg:hover:border-border-light lg:transition-colors text-text-dark lg:box-border max-lg:mb-4"
             onClick={handleAddToCart}
           >
             <FontAwesomeIcon icon={faCartShopping} className="mr-4" />
