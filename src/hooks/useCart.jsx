@@ -56,5 +56,9 @@ export default function useCart() {
     setCart((s) => s.filter((item) => item.id !== id));
   }
 
-  return { cart, addItem, increaseQuantity, decreaseQuantity, removeItem };
+  function emptyCart() {
+    setCart([]);
+  }
+
+  return { cart, addItem, increaseQuantity, decreaseQuantity, removeItem, emptyCart };
 }

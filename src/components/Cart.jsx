@@ -42,13 +42,23 @@ export default function Cart({ cart }) {
     cart.removeItem(id);
   }
 
+  function deleteAllHandler() {
+    cart.emptyCart();
+  }
+
   return (
     <>
       <Header path={'/'} />
 
       {status === 'loading' && <Loading />}
       {status === 'error' && <Error message={error.message} />}
-      {status === 'success' && <CartItems items={items} deleteHandler={deleteHandler} />}
+      {status === 'success' && (
+        <CartItems
+          items={items}
+          deleteHandler={deleteHandler}
+          deleteAllHandler={deleteAllHandler}
+        />
+      )}
     </>
   );
 }

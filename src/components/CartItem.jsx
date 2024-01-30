@@ -5,7 +5,7 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 export default function CartItem({ item, deleteHandler }) {
   return (
-    <div className="sm:flex sm:items-center border-b-2 border-border-light dark:border-border-dark mx-8 sm:mx-12 py-4 last:border-none relative">
+    <div className="sm:flex sm:items-center border-b-2 border-border-light dark:border-border-dark py-4 last:border-none relative">
       <div className="w-32 h-32 sm:flex-shrink-0 border-4 border-primary-light rounded-[0.625rem] overflow-hidden p-1">
         <img src={item.image} className="w-full h-full object-cover object-top rounded-md" />
       </div>
