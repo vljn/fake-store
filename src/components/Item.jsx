@@ -2,9 +2,36 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import 'animate.css';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Item({ id, image, title, price, cart }) {
   const navigate = useNavigate();
+  const [animation, setAnimation] = useState(false);
+  const [canAddToCart, setCanAddToCart] = useState(true);
+  const ref = useRef(null);
+
+  let cartIconClass;
+  if (animation) {
+    cartIconClass = ' animate__lightSpeedOutRight';
+  } else {
+    cartIconClass = ' animate__lightSpeedInLeft';
+  }
+
+  useEffect(() => {
+    if (animation) {
+      const handleAnimationEnd = () => {
+        setAnimation(false);
+        setCanAddToCart(true);
+      };
+      const element = ref?.current;
+      element.addEventListener('animationend', handleAnimationEnd);
+
+      return () => {
+        element.removeEventListener('animationend', handleAnimationEnd);
+      };
+    }
+  }, [animation]);
 
   const handleItemClick = () => {
     navigate('/items/' + id);
@@ -12,7 +39,11 @@ export default function Item({ id, image, title, price, cart }) {
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    cart.addItem(id, 1);
+    if (canAddToCart) {
+      cart.addItem(id, 1);
+      setAnimation(true);
+      setCanAddToCart(false);
+    }
   };
 
   return (
@@ -39,7 +70,11 @@ export default function Item({ id, image, title, price, cart }) {
           onClick={handleAddToCart}
         >
           <h2 className="sm:text-xl md:text-2xl">{price}$</h2>
-          <FontAwesomeIcon className="sm:text-xl md:text-2xl" icon={faCartShopping} />
+          <FontAwesomeIcon
+            className={'sm:text-xl md:text-2xl animate__animated animate__faster' + cartIconClass}
+            icon={faCartShopping}
+            ref={ref}
+          />
         </button>
       </div>
     </div>
