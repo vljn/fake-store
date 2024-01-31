@@ -11,10 +11,14 @@ export default function Header({ path }) {
   const [showButtons, setShowButtons] = useState(true);
   let buttonClasses;
 
-  if (showButtons) {
-    buttonClasses = 'animate__animated animate__fadeInDown animate__faster';
+  if (!lastScroll) {
+    buttonClasses = '';
   } else {
-    buttonClasses = 'animate__animated animate__fadeOutUp animate__faster';
+    if (showButtons) {
+      buttonClasses = 'animate__animated animate__fadeInDown animate__faster';
+    } else {
+      buttonClasses = 'animate__animated animate__fadeOutUp animate__faster';
+    }
   }
 
   useEffect(() => {
